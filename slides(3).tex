@@ -159,10 +159,8 @@
   \begin{frame}%Marko
     \frametitle{Definition von Slice-Funktionen}
     \begin{defin}
-      Eine Funktion $f:\{0,1\}^n \rightarrow \{0,1\}$ hat Slice(Teil)-Funktionen, wenn glit:\\
-
+      Eine Funktion $f:\{0,1\}^n \rightarrow \{0,1\}$ hat Slice(Teil)-Funktionen, wenn gilt:\\
       $\sum_{i=1}^{n} x_i<k\Rightarrow f(x)=0$\\
-
       $\sum_{i=1}^{n} x_i>k\Rightarrow f(x)=1$\\
     \end{defin}
     Eine boolesche Funktion hat mehrere Slice(Teil)-Funktionen, wenn der Ausgang der Funktion $1$ ist obwohl nicht alle Eingangswerte $1$ sein mussten.
@@ -181,12 +179,12 @@
         \begin{cases}
           0 & \sum\nolimits_{i=1}^{n} x_i < k\\
           1 & \sum\nolimits_{i=1}^{n} x_1 > k\\
-          f(x) &\sum\nolimits_{i_1}^{n} x_i = k
+          f(x) & \sum\nolimits_{i=1}^{n} x_i = k % gucken ob i=1 oder i_1 gemeint war. weil es ist schon etwas komisch so gewesen.
         \end{cases}
       \end{align*}
     \end{defin}
-    Beobachtung: Slice-Funktionen sind monoton.\\
-    Da für alle $Elemente < k$ eine $0$ steht und für alle $> k$ eine $1$, ist somit der Umschlag von $0$ auf $1$ bei oder nach dem $k$.
+    Wie bereits gesagt ist eine Slice-Funktion immer $1$ ab der Anzahl $k$ Eing\"angen die auf $1$ liegen.
+    Daraus ergibt sich die obere Definition und es ist zu beobachten das jede Slice-Funktion monoton steigend ist.
   \end{frame}
 
   \subsection{im Schaltkreis}
@@ -194,10 +192,13 @@
     \frametitle{Slice-Funktionen im Schaltkreis}
     \begin{lem}
       Für jeden $U_2$ Schaltkreis $\beta$ gibt es einen äquivalenten Schaltkreis, welcher höchstens
-      2 mal so groß ist wie $\beta$, bei dem nur NOT-Gatter bei den Variablen benutzt werden. %9.4 Johanes
+      2 mal so groß ist wie $\beta$, bei dem die Verneinungen durch die Bereitstellung der beiden Zust\"ande der Eing\"ange also $1$ und $0$ realisiert werden. %9.4 Johanes
     \end{lem}
-    Es wird der jeweilige Schaltkreis erweitert, wobei jedes nicht-monotone Gatter in monotone Grundgatter zerlegt wird und die NOT-Gatter werden von innen nach außen, bis zur Variablen / Input Ebene, verschoben werden.
-    \\Beweis durch Konstruktion.
+    Die Schritte der Erstellung und der Beweis kommt in den folgenden Schaltbildern.
+
+%     Der Schaltkreis wird in seine Slice-Funktionen zerlegt, wobei erst alle nicht monotonen Gatter in ihre monotonen Grundgatter zerlegt werden, sodass der Schaltkreis nun aus vieles einzel-Schaltkreisen aufgebaut ist.
+%     Dieser Schaltkreis wird mit der verneinten Version seiner Eing\"ange geklont und die Ausg\"ange werden \"uber einen Multiplexer zusammen geschlossen.
+%     Die Steuersignale des Multiplexers stammen von den Eing\"angen der Mutter-Funktion und die Eing\"ange der Funktion selber sind statisch.
   \end{frame}
 
   \subsection{die Komplexität}
