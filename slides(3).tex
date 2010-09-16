@@ -37,25 +37,23 @@
   \begin{frame} %Stephan
     \frametitle{boolesche Funktionen}
     Eine Funktion ist eine Abbildung von einer Menge A in eine Menge B.\\
-    In unserem Fall:
-    $f: \{0,1\}^{n} \rightarrow \{0,1\}$ \\
-    Also für jedes Tupel von Elementen am Eingang gibt es genau ein Element am Ausgang, das es repräsentiert.
+    In unserem Fall: $f: \{0,1\}^{n} \rightarrow \{0,1\}$ \\
+    Also jedes Tupel von $\{0, 1\}$ Elementen wird genau auf ein $\{0, 1\}$ Element abgebildet.
   \end{frame}
 
-  \section{Monotonie von Funktionen}
+  \section{monotone Funktionen}
   \subsection*{Definition}
   \begin{frame}%Stephan
     \frametitle{Definition von Monotonie}
     Monotonie ist eine Eigenschaft von Funktionen.\\
     $f:A \rightarrow B: \forall x_1,x_2 \in A : (x_1 \leq_A x_2 \Rightarrow f(x_1) \leq_B f(x_2))$\\
     Um die Mengen ordnen zu können, brauchen wir Ordnungsrelationen.\\
-    Wir benutzen hier die Ordnungsrelation $\leq_A$ für die Menge A\\
-    und $\leq_B$ für die Menge B.\\
+    Wir benutzen hier das Symbol $\leq_A$ für die Ordnungsrelation über die Menge $A$ und $\leq_B$ für die der Menge $B$.
   \end{frame}
 
   \subsection*{Allgemeine Beispiele}
   \begin{frame}
-    \frametitle{Monotonie Beispiele}
+    \frametitle{Beispiele}
     Allgemeine Beispiele für monotone Funktionen:\\
     \begin{tabular}[t]{ll}
       \includegraphics[scale=0.35]{images/f1.pdf} & $f(x) = m * x + n$
@@ -69,56 +67,57 @@
   \subsection{Ordnungsfunktionen}
   \begin{frame}%Stephan
     \frametitle{Ordnungfunktionen}
-    Monotonien bilden eine partielle Ordnung.\\ Es sind also folgende Eigenschaften erfüllt:\\
+    Die monotone Eigenschaft von Funktionen wird durch 3 partielle Ordnungen erfüllt.
     \begin{itemize}
       \item reflexiv $\forall a \in A: (a,a) \in B$\\
       \item transitiv $\forall a,b,c \in A: (a,b) \in B \land (b,c) \in B \Rightarrow (a,c) \in B$\\
       \item antisymmetrisch $\forall a,b \in A: (a,b) \in B \land (b,a) \in B \Rightarrow a=b$\\
     \end{itemize}
-    Es ergeben sich also folgende monotone Grundgatter:\\
+    Es ergeben sich z.B. folgende monotone Grundfunktionen:\\
     \begin{tabular}[t]{|cc|c|c|c|c|c|c|} \hline
+      \multicolumn{2}{|c|}{Menge $A$} & \multicolumn{6}{|c|}{Menge $B$} \\ \hline
       $x_1$	& $x_2$	& AND	& OR	& 0	& 1	& $p_1$	& $p_2$\\ \hline
-      0	& 0	& 0	& 0	& 0	& 1	& 0	& 0\\
-      0	& 1	& 0	& 1	& 0	& 1	& 0	& 1\\
-      1	& 0	& 0	& 1	& 0	& 1	& 1	& 0\\
-      1	& 1	& 1	& 1	& 0	& 1	& 1	& 1\\ \hline
+      0	        & 0	& 0	& 0	& 0	& 1	& 0	& 0\\
+      0	        & 1	& 0	& 1	& 0	& 1	& 0	& 1\\
+      1	        & 0	& 0	& 1	& 0	& 1	& 1	& 0\\
+      1	        & 1	& 1	& 1	& 0	& 1	& 1	& 1\\ \hline
     \end{tabular}
   \end{frame}
 
   \subsection{Ordnungsrelations-Beispiele}
-  \subsubsection*{Ordnungsrelation Beispiel mit Tupel n = 1}
+  \subsubsection*{Ordnungsrelation Beispiel der Tupel mit n = 1}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m1.pdf}
-      \caption{Anstieg des Tupels n = 1}
-      Die Ordnungsrelation ist einfach ablesbar.
+      \caption{Anstieg der Tupel mit n = 1}
+      Die Ordnungsrelation ist einfach von Unten nach Oben ablesbar.
     \end{figure}
   \end{frame}
 
-  \subsubsection*{Ordnungsrelation Beispiel mit Tupel n = 2}
+  \subsubsection*{Ordnungsrelation Beispiel der Tupel mit n = 2}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m2.pdf}
-      \caption{Anstieg des Tupels n = 2}
-      Die Ordnungsrelation ist einfach ablesbar.
+      \caption{Anstieg der Tupel mit n = 2}
+      Die Ordnungsrelation ist einfach von Unten nach Oben ablesbar.
     \end{figure}
   \end{frame}
 
-  \subsubsection*{Ordnungsrelation Beispiel mit Tupel n = 3}
+  \subsubsection*{Ordnungsrelation Beispiel der Tupel mit n = 3}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m3.pdf}
-      \caption{Anstieg des Tupels n = 3}
-      Die Ordnungsrelation ist NICHT mehr einfach ablesbar.
+      \caption{Anstieg der Tupel mit n = 3}
+      Die Ordnungsrelation ist NICHT mehr einfach von Unten nach Oben ablesbar, weil das Tupel $101$ und $010$ nicht die 3 partiellen Ordnungen erfüllen.
     \end{figure}
   \end{frame}
 
-  \subsubsection*{Ordnungsrelation Beispiel mit Tupel n = 4}
+  \subsubsection*{Ordnungsrelation Beispiel der Tupel mit n = 4}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m4.pdf}
       \caption{Anstieg des Tupels n = 4}
-      Die Ordnungsrelation ist kompliziert.
+      Die Ordnungsrelation ist komplexer geworden, da viele Tupel nicht mit denen der höheren Ebene die 3 partiellen Ordnungen erfüllen.
     \end{figure}
   \end{frame}
 
@@ -127,19 +126,19 @@
     \begin{frame}%Johanes
     \frametitle{Komplexität in Worten}
     Die Komplexität ist ein Maß für den Aufwand einer Funktion.
-    Hierbei geht es um den Verbrauch von Ressourcen, die Größe (Anzahl der Gatter) sowie die Tiefe (längster Pfad)
-    eines Schaltkreises.\\
+    Dieser Aufwand stellt sich in Grö\ss{}e und Länge der booleschen Funktion dar, die durch einen Schaltkreis auf einem Chip realisiert werden soll.
+    Je grö\ss{}er eine Funktion ist, desto mehr Platz brauch sie durch ihre Gatter auf dem Chip und je länger sie ist, desto mehr Zeit braucht ein Signal vom Anfang zum Ende des Schaltkreises.
   \end{frame}
 
   \subsection*{in Formeln}
   \begin{frame}
     \frametitle{Komplexität in Formeln}
     \begin{itemize}
-      \item $C(f) = min \{G(S(f))\}$
-      \item $S(f)$ "best" möglichen SK für die Funktion $f(x)$
+      \item $G(S)$ Berechnet die Anzahl der Gatter des Schaltkreises
+      \item $C(f) = min \{G(S) | S berechnet f\}$
+      \item $S(f)$ "kleinsten" möglichen Schaltkreis für $f(x)$
       \item $C_M(f) = min \{G(S_M(f))\}$
-      \item $S_M(f)$ "best" möglichen monotonen SK für die Funktion $f(x)$
-      \item $G(S)$ Anzahl der Gatter der Funktion $f(x)$, also die Größe
+      \item $S_M(f)$ "kleinsten" möglichen monotonen Schaltkreis $f(x)$
     \end{itemize}
   \end{frame}
 
@@ -148,10 +147,10 @@
     \frametitle{Theorem von Tardos}
     Für den Unterschied zwischen einem monotonen und einem nicht monotonen Schaltkreis in Bezug auf die Größe gilt, das seine nicht monotone Variante die untere Schranke für den monotonen bildet.
     \begin{thm}[Tardos]
-      Die Lücke zwischen $C_{M}$ und $C$ ist exponentiell.
+      Der Abstand zwischen $C_{M}$ und $C$ ist exponentiell. %glaube ist eine bessere \"Ubersetzung
     \end{thm}
-    Das heißt also: Je größer ein Schaltkreis ist, umso größer ist der Abstand der Komplexit\"aten, der monotonen Lösung von der nicht-monotonen.\\
-    $\forall f(x)_n, f(x)_{n+1} \in \{0,1\}:$\\$(C_M(f(x)_n) - C(f(x)_n)) \leq (C_M(f(x)_{n+1}) - C(f(x)_{n+1})$
+    Das heißt also: Je größer ein Schaltkreis ist, umso größer wächst der Abstand der Komplexitäten.
+    Dieses Wachsen verhält sie wie eine Exponentialfunktion.\\
   \end{frame}
 
   \section{Slice-Funktionen}
@@ -159,20 +158,18 @@
   \begin{frame}%Marko
     \frametitle{Definition von Slice-Funktionen}
     \begin{defin}
-      Eine Funktion $f:\{0,1\}^n \rightarrow \{0,1\}$ hat Slice(Teil)-Funktionen, wenn gilt:\\
+      Eine Funktion $f:\{0,1\}^n \rightarrow \{0,1\}$ ist eine Slice-Funktion, wenn es ein $k \in \mathbb{N}$ gibt sodass gilt:\\
       $\sum_{i=1}^{n} x_i<k\Rightarrow f(x)=0$\\
       $\sum_{i=1}^{n} x_i>k\Rightarrow f(x)=1$\\
     \end{defin}
-    Eine boolesche Funktion hat mehrere Slice(Teil)-Funktionen, wenn der Ausgang der Funktion $1$ ist obwohl nicht alle Eingangswerte $1$ sein mussten.
-    Das $k \in \mathbb{N}$ gibt die Anzahl an wie viele Eing\"ange auf $1$ sein mussten.
-    Somit kann man die Funktion teilen in kleinere Funktionen die nicht mehr alle Eing\"ange haben aber immer noch f\"ur die noch existieren logisch \"aquivalent zur Mutter-Funktion sind.
+    Eine boolesche Funktion ist eine Slice(teilbare)-Funktionen,wenn sie sich monoton verh\"alt.
+    Das $k$ gibt hier an wie viele Eing\"ange auf $1$ stehen mussten damit der Ausgang $1$ wurde.
   \end{frame}
 
   \subsection*{die Monotonie}
   \begin{frame}
     \frametitle{Monotonie von Slice-Funktionen}
-    Für eine gegebene Funktion $f:\{0,1\}^n \rightarrow \{0,1\}$ können wir den k-ten Slice von $f$,
-    $f^{(k)}$ wie folgt definieren:\\
+    Für eine gegebene Funktion $f:\{0,1\}^n \rightarrow \{0,1\}$ ist der $k-te$ Slice von $f$, $f^{(k)}$ wie folgt definiert:\\
     \begin{defin}
       \begin{align*}
         f^{(k)}(x) =
@@ -183,22 +180,17 @@
         \end{cases}
       \end{align*}
     \end{defin}
-    Wie bereits gesagt ist eine Slice-Funktion immer $1$ ab der Anzahl $k$ Eing\"angen die auf $1$ liegen.
-    Daraus ergibt sich die obere Definition und es ist zu beobachten das jede Slice-Funktion monoton steigend ist.
+    Durch diese Definition ist der $k-te$ Slice von jeder booleschen Funktion immer monoton.
   \end{frame}
 
   \subsection{im Schaltkreis}
   \begin{frame}%Johanes
     \frametitle{Slice-Funktionen im Schaltkreis}
     \begin{lem}
-      Für jeden $U_2$ Schaltkreis $\beta$ gibt es einen äquivalenten Schaltkreis, welcher höchstens
-      2 mal so groß ist wie $\beta$, bei dem die Verneinungen durch die Bereitstellung der beiden Zust\"ande der Eing\"ange also $1$ und $0$ realisiert werden. %9.4 Johanes
+      Für jeden $U_2$ (nicht monotonen) Schaltkreis $\beta$ gibt es einen äquivalenten Schaltkreis, welcher höchstens
+      2 mal so groß ist wie $\beta$, bei dem die Verneinungen durch die Bereitstellung der beiden Zustände der Eingänge also $1$ und $0$ realisiert werden. %9.4 Johanes
     \end{lem}
     Die Schritte der Erstellung und der Beweis kommt in den folgenden Schaltbildern.
-
-%     Der Schaltkreis wird in seine Slice-Funktionen zerlegt, wobei erst alle nicht monotonen Gatter in ihre monotonen Grundgatter zerlegt werden, sodass der Schaltkreis nun aus vieles einzel-Schaltkreisen aufgebaut ist.
-%     Dieser Schaltkreis wird mit der verneinten Version seiner Eing\"ange geklont und die Ausg\"ange werden \"uber einen Multiplexer zusammen geschlossen.
-%     Die Steuersignale des Multiplexers stammen von den Eing\"angen der Mutter-Funktion und die Eing\"ange der Funktion selber sind statisch.
   \end{frame}
 
   \subsection{die Komplexität}
