@@ -21,7 +21,6 @@
 \newtheorem{lem}{Lemma}
 \newtheorem{beh}{Behauptung}
 
-
 \title{Monotone vs. Non-monotone Circuit Complexity}
 \author{Johannes Honke, Marko Jahn, Stephan Mielke}
 \institute{BTU-Cottbus}
@@ -67,7 +66,7 @@
 
   \subsection{Ordnungsfunktionen}
   \begin{frame}%Stephan
-    \frametitle{Ordnungfunktionen}
+    \frametitle{Ordnungsfunktionen}
     Die monotone Eigenschaft von Funktionen wird durch 3 partielle Ordnungen erfüllt.
     \begin{itemize}
       \item reflexiv $\forall a \in A: (a,a) \in B$\\
@@ -77,11 +76,11 @@
     Es ergeben sich z.B. folgende monotone Grundfunktionen:\\
     \begin{tabular}[t]{|cc|c|c|c|c|c|c|} \hline
       \multicolumn{2}{|c|}{Menge $A$} & \multicolumn{6}{|c|}{Menge $B$} \\ \hline
-      $x_1$	& $x_2$	& AND	& OR	& 0	& 1	& $p_1$	& $p_2$\\ \hline
-      0	        & 0	& 0	& 0	& 0	& 1	& 0	& 0\\
-      0	        & 1	& 0	& 1	& 0	& 1	& 0	& 1\\
-      1	        & 0	& 0	& 1	& 0	& 1	& 1	& 0\\
-      1	        & 1	& 1	& 1	& 0	& 1	& 1	& 1\\ \hline
+      $x_1$     & $x_2$ & AND   & OR    & 0     & 1     & $p_1$ & $p_2$\\ \hline
+      0         & 0     & 0     & 0     & 0     & 1     & 0     & 0\\
+      0         & 1     & 0     & 1     & 0     & 1     & 0     & 1\\
+      1         & 0     & 0     & 1     & 0     & 1     & 1     & 0\\
+      1         & 1     & 1     & 1     & 0     & 1     & 1     & 1\\ \hline
     \end{tabular}
   \end{frame}
 
@@ -124,7 +123,7 @@
 
   \section{Fragen und Antworten}
   \begin{frame}%Marko
-    \frametitle{Randolfs Fragen}
+    \frametitle{Fragen und Antworten}
     \begin{block}{Gibt es für jede monotone Funktion einen monotonen Schaltkreis?}
       Ja, die DNF besteht zwar aus NOT-Gattern, jedoch, wenn die Funktion monoton war, bleibt die Funktion bestehen, wenn man alle verneinten Variablen entfernt.
     \end{block}
@@ -226,6 +225,25 @@
       $C(f) \leq C_M(f) \leq (C(f) +n^2 log\;n)$%9.5 Marko
     \end{thm}
     Die untere Schranke von $C_M(f)$ ist $C(f)|f \in U_2$ und die obere $C(f) + n^2 + log n$.
+  \end{frame}
+
+  \subsection*{Schwellenwertfunktion}
+  \begin{frame}%Marko         ab hier  meine änderungen
+     \frametitle{Schwellenwertfunktion}
+     Die Schwellenwertfunktion $ T^{n-1}_k(X_i)$\\
+     wobei: \\
+     $X$ die Menge aller Eingänge des SK ist.\\
+     $X_i = X- x_i$
+     \begin{defin}
+       \begin{align*}
+       T^{n-1}_k (X_i)=
+       \begin{cases}
+         0 & \sum\nolimits_{j=1}^{n} x_j < k\\
+         1 & \sum\nolimits_{j=1}^{n} x_j > k\\
+         \overline{x_i} & \sum\nolimits_{j=1}^{n} x_j = k
+        \end{cases}
+       \end{align*}
+      \end{defin}
   \end{frame}
 
   \section{Zusammenfassung}

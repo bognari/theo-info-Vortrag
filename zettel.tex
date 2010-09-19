@@ -177,6 +177,22 @@
     \end{thm}
     Die untere Schranke von $C_M(f)$ ist $C(f)|f \in U_2$ und die obere $C(f) + n^2 + log n$.
 
+  \subsection*{Schwellenwertfunktion}
+  %Marko         ab hier  meine änderungen
+     Die Schwellenwertfunktion $ T^{n-1}_k(X_i)$\\
+     wobei: \\
+     $X$ die Menge aller Eingänge des SK ist.\\
+     $X_i = X- x_i$
+     \begin{defin}
+       \begin{align*}
+       T^{n-1}_k (X_i)=
+       \begin{cases}
+         0 & \sum\nolimits_{j=1}^{n} x_j < k\\
+         1 & \sum\nolimits_{j=1}^{n} x_j > k\\
+         \overline{x_i} & \sum\nolimits_{j=1}^{n} x_j = k
+        \end{cases}
+       \end{align*}
+      \end{defin}
 
 
 \end{document}
