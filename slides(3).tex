@@ -55,12 +55,12 @@
   \begin{frame}
     \frametitle{Beispiele}
     Allgemeine Beispiele für monotone Funktionen:\\
-    \begin{tabular}[t]{ll}
-      \includegraphics[scale=0.35]{images/f1.pdf} & $f(x) = m * x + n$
+    \begin{tabular}[t]{lll}
+      \includegraphics[scale=0.35]{images/f1.pdf} & $f(x) = m * x + n$ & $m, n \in \mathbb{R}$ $m \neq 0$
     \end{tabular}
     \\Beispiele für NICHT monotone Funktionen:\\
-    \begin{tabular}[t]{ll}
-      \includegraphics[scale=0.35]{images/f2.pdf} & $f(x) = a * x^2 + b * x + c$
+    \begin{tabular}[t]{lll}
+      \includegraphics[scale=0.35]{images/f2.pdf} & $f(x) = a * x^2 + b * x + c$ & $a, b, c \in \mathbb{R}$ $a \neq 0$
     \end{tabular}
   \end{frame}
 
@@ -84,40 +84,42 @@
     \end{tabular}
   \end{frame}
 
-  \subsection{Ordnungsrelations-Beispiele}
-  \subsubsection*{Ordnungsrelation Beispiel der Tupel mit n = 1}
+  \subsection{Ordnungsfunktions-Beispiele ($\leq$)}
+  \subsubsection*{Ordnungsfunktions Beispiel der Tupel mit n = 1}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m1.pdf}
       \caption{Anstieg der Tupel mit n = 1}
-      Die Ordnungsrelation ist einfach von Unten nach Oben ablesbar.
+      Die Ordnungsrelation ist einfach von Unten nach Oben ablesbar.\\
+      Den reflexiv transitiven Abschluss selber bilden!
     \end{figure}
   \end{frame}
 
-  \subsubsection*{Ordnungsrelation Beispiel der Tupel mit n = 2}
+  \subsubsection*{Ordnungsfunktions Beispiel der Tupel mit n = 2}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m2.pdf}
       \caption{Anstieg der Tupel mit n = 2}
-      Die Ordnungsrelation ist einfach von Unten nach Oben ablesbar.
+      Die Ordnungsrelation ist einfach von Unten nach Oben ablesbar.\\
+      Den reflexiv transitiven Abschluss selber bilden!
     \end{figure}
   \end{frame}
 
-  \subsubsection*{Ordnungsrelation Beispiel der Tupel mit n = 3}
+  \subsubsection*{Ordnungsfunktions Beispiel der Tupel mit n = 3}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m3.pdf}
       \caption{Anstieg der Tupel mit n = 3}
-      Die Ordnungsrelation ist NICHT mehr einfach von Unten nach Oben ablesbar, weil das Tupel $010$ und $101$ nicht die 3 partiellen Ordnungen erfüllen.
+      Die Ordnungsrelation ist NICHT mehr einfach von Unten nach Oben ablesbar, weil z.B. das Tupel $010$ und $101$ nicht vergleichbar sind da zwar die Nullen zur Eins aufsteigen aber die Eins auf die Null zur\"uck f\"allt.
     \end{figure}
   \end{frame}
 
-  \subsubsection*{Ordnungsrelation Beispiel der Tupel mit n = 4}
+  \subsubsection*{Ordnungsfunktions Beispiel der Tupel mit n = 4}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m4.pdf}
       \caption{Anstieg des Tupels n = 4}
-      Die Ordnungsrelation ist komplexer geworden, da viele Tupel nicht mit denen der höheren Ebene die 3 partiellen Ordnungen erfüllen.
+      Die Ordnungsrelation ist komplexer geworden, da viele Elemente von Unten nach Oben nicht mehr in der Relation enthalten sind.
     \end{figure}
   \end{frame}
 
@@ -137,8 +139,8 @@
     \begin{frame}%Johanes
     \frametitle{Komplexität in Worten}
     Die Komplexität ist ein Maß für den Aufwand einer Funktion.
-    Dieser Aufwand stellt sich in Grö\ss{}e und Länge der booleschen Funktion dar, die durch einen Schaltkreis auf einem Chip realisiert werden soll.
-    Je grö\ss{}er eine Funktion ist, desto mehr Platz brauch sie durch ihre Gatter auf dem Chip und je länger sie ist, desto mehr Zeit braucht ein Signal vom Anfang zum Ende des Schaltkreises.
+    Dieser Aufwand unterteilt sich in Grö\ss{}e und Tiefe f\"ur den Schaltkreis.
+    Je grö\ss{}er ein Schaltkreis ist, desto mehr Platz brauch er durch seine Gatter auf dem Chip und je tiefer er ist, desto mehr Zeit braucht ein Signal vom Anfang zum Ende des Schaltkreises.
   \end{frame}
 
   \subsection*{in Formeln}
@@ -146,10 +148,10 @@
     \frametitle{Komplexität in Formeln}
     \begin{itemize}
       \item $G(S)$ berechnet die Anzahl der Gatter des Schaltkreises
-      \item $C(f) = min \{G(S) |$ S berechnet f$\}$
-      \item $S(f)$ berechnet den kleinstmöglichen Schaltkreis für $f(x)$
+      \item $C(f) = min \{G(S) |$ S bestimmt f$\}$
+      \item $S(f)$ bestimmt den kleinstmöglichen Schaltkreis für $f(x)$
       \item $C_M(f) = min \{G(S_M(f))\}$
-      \item $S_M(f)$ berechnet den kleinstmöglichen monotonen Schaltkreis
+      \item $S_M(f)$ bestimmt den kleinstmöglichen monotonen Schaltkreis
     \end{itemize}
   \end{frame}
 
@@ -172,7 +174,7 @@
       $\sum_{i=1}^{n} x_i<k\Rightarrow f(x)=0$\\
       $\sum_{i=1}^{n} x_i>k\Rightarrow f(x)=1$\\
     \end{defin}
-    Eine boolesche Funktion ist eine Slice(teilbare)-Funktionen,wenn sie sich monoton verh\"alt.
+    Eine boolesche Funktion ist eine Slice(teilbare)-Funktionen, wenn sie sich monoton verh\"alt.
     Das $k$ gibt an wie viele Eing\"ange auf $1$ stehen m\"ussten damit der Ausgang $1$ wird.
   \end{frame}
 
@@ -197,9 +199,10 @@
   \begin{frame}%Johanes
     \frametitle{Slice-Funktionen im Schaltkreis}
     \begin{lem}
-      Für jeden $U_2$ (nicht monotonen) Schaltkreis $\beta$ gibt es einen äquivalenten monotonen Schaltkreis, welcher höchstens
-      2 mal so groß ist wie $\beta$. Bei dem f\"ur jeden Eingang auch sein Inverses bereitgestellt wird.
+      Für jeden $U_2$ (Not und Monotone Gatter) Schaltkreis $\beta$ gibt es einen äquivalenten monotonen Schaltkreis, welcher höchstens
+      2 mal so groß ist wie $\beta$.
     \end{lem}
+    Dieser Schaltkreis wird vom Ausgang aus zu den Eing\"angen in monotone Gatter umgewandelt (De Morgan’sche Regeln) und die Not Gatter werden bis zu den Eing\"angen verschoben.
   \end{frame}
 
   \subsection{die Komplexität}
