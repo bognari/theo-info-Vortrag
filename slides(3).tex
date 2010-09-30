@@ -24,7 +24,7 @@
 \title{Monotone vs. Non-monotone Circuit Complexity}
 \author{Johannes Honke, Marko Jahn, Stephan Mielke}
 \institute{BTU-Cottbus}
-\date{20.09.2010}
+\date{??.??.20??}
 
 \begin{document}
 
@@ -64,10 +64,10 @@
     \end{tabular}
   \end{frame}
 
-  \subsection{Ordnungsfunktionen}
+  \subsection{Ordnungsrelation}
   \begin{frame}%Stephan
-    \frametitle{Ordnungsfunktionen}
-    Die monotone Eigenschaft von Funktionen wird durch 3 partielle Ordnungen erfüllt.
+    \frametitle{Ordnungsrelationen}
+    Die monotone Eigenschaft von Funktionen wird durch 3 Eigenschaften erfüllt.
     \begin{itemize}
       \item reflexiv $\forall a \in A: (a,a) \in B$\\
       \item transitiv $\forall a,b,c \in A: (a,b) \in B \land (b,c) \in B \Rightarrow (a,c) \in B$\\
@@ -84,8 +84,8 @@
     \end{tabular}
   \end{frame}
 
-  \subsection{Ordnungsfunktions-Beispiele ($\leq$)}
-  \subsubsection*{Ordnungsfunktions Beispiel der Tupel mit n = 1}
+  \subsection{Ordnungsrelations-Beispiele ($\leq$)}
+  \subsubsection*{Ordnungsrelations Beispiel der Tupel mit n = 1}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m1.pdf}
@@ -95,7 +95,7 @@
     \end{figure}
   \end{frame}
 
-  \subsubsection*{Ordnungsfunktions Beispiel der Tupel mit n = 2}
+  \subsubsection*{Ordnungsrelations Beispiel der Tupel mit n = 2}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m2.pdf}
@@ -105,7 +105,7 @@
     \end{figure}
   \end{frame}
 
-  \subsubsection*{Ordnungsfunktions Beispiel der Tupel mit n = 3}
+  \subsubsection*{Ordnungsrelations Beispiel der Tupel mit n = 3}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m3.pdf}
@@ -114,7 +114,7 @@
     \end{figure}
   \end{frame}
 
-  \subsubsection*{Ordnungsfunktions Beispiel der Tupel mit n = 4}
+  \subsubsection*{Ordnungsrelations Beispiel der Tupel mit n = 4}
   \begin{frame}
     \begin{figure}
       \includegraphics[scale=0.30]{images/m4.pdf}
@@ -147,11 +147,11 @@
   \begin{frame}
     \frametitle{Komplexität in Formeln}
     \begin{itemize}
-      \item $G(S)$ berechnet die Anzahl der Gatter des Schaltkreises
+      \item $G(S)$ bezeichnet die Anzahl der Gatter des Schaltkreises
       \item $C(f) = min \{G(S) |$ S bestimmt f$\}$
-      \item $S(f)$ bestimmt den kleinstmöglichen Schaltkreis für $f(x)$
+      \item $S(f)$ bezeichnet den kleinstmöglichen Schaltkreis für $f(x)$
       \item $C_M(f) = min \{G(S_M(f))\}$
-      \item $S_M(f)$ bestimmt den kleinstmöglichen monotonen Schaltkreis
+      \item $S_M(f)$ bezeichnet den kleinstmöglichen monotonen Schaltkreis
     \end{itemize}
   \end{frame}
 
@@ -162,7 +162,10 @@
     \begin{thm}[Tardos]
       Der Abstand zwischen $C_{M}$ und $C$ ist exponentiell. %glaube ist eine bessere \"Ubersetzung
     \end{thm}
-    Der Abstand w\"achst exponentiell mit der Gr\"o\ss{}e des Schaltkreises.
+    Der Abstand w\"achst exponentiell mit der Gr\"o\ss{}e des Schaltkreises. \\
+    Der Beweis f\"ur den Theorem ist unter:\\
+    http://www.cs.cornell.edu/People/eva/Gap.Between.Monotone.NonMonotone.\\Circuit.Complexity.is.Exponential.pdf
+    nach zu lesen.
   \end{frame}
 
   \section{Slice-Funktionen}
@@ -174,11 +177,26 @@
       $\sum_{i=1}^{n} x_i<k\Rightarrow f(x)=0$\\
       $\sum_{i=1}^{n} x_i>k\Rightarrow f(x)=1$\\
     \end{defin}
-    Eine boolesche Funktion ist eine Slice(teilbare)-Funktionen, wenn sie sich monoton verh\"alt.
-    Das $k$ gibt an wie viele Eing\"ange auf $1$ stehen m\"ussten damit der Ausgang $1$ wird.
+    Eine monotone boolesche Funktion ist eine Slice(teilbare)-Funktionen, wenn es
+    ein $k \in \mathbb{N}$ gibt, dass die Anzahl der Eing\"ange auf $1$, ab dem der Ausgang $1$ wird.
+%   an wie viele Eing\"ange auf $1$ stehen m\"ussten damit der Ausgang $1$ wird.
   \end{frame}
 
-  \subsection*{die Monotonie}
+  \subsection{Beispiele}
+  \begin{frame}
+    \frametitle{Beispiele zu Slice-Funktionen}
+      \begin{tabular}[t]{|c|c|c|} \hline
+        Funktion  & $k$   & Eing\"ange\\ \hline
+        AND       & 2     & 2\\
+        OR        & 1     & 2\\
+        1         & 0     & 0\\
+        0         & 0     & 0\\
+        $P_{n}$     & 1     & 1\\ \hline
+      \end{tabular}
+  \end{frame}
+
+
+  \subsection*{die $k$-te Slice}
   \begin{frame}
     \frametitle{Monotonie von Slice-Funktionen}
     Für eine gegebene Funktion $f:\{0,1\}^n \rightarrow \{0,1\}$ ist der $k-te$ Slice von $f$, $f^{(k)}$ wie folgt definiert:\\
