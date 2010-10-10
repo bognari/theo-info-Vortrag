@@ -134,11 +134,15 @@
     \end{block}
   \end{frame}
 
+% belegen durch strukturelle induktion \"uber den schaltkreisen
+% h(x_1, x_2, x_3) = f(x_1, g(x_2, x_3)) ?
+% warum ist h monoton wenn f und g monoton sind?
+
   \section{Komplexität}
   \subsection*{in Worten}
     \begin{frame}%Johanes
     \frametitle{Komplexität in Worten}
-    Die Komplexität ist ein Maß für den Aufwand einer Funktion.
+    Die Komplexität ist ein Maß für den Aufwand eines Schaltkreis.
     Dieser Aufwand unterteilt sich in Grö\ss{}e und Tiefe f\"ur den Schaltkreis.
     Je grö\ss{}er ein Schaltkreis ist, desto mehr Platz brauch er durch seine Gatter auf dem Chip und je tiefer er ist, desto mehr Zeit braucht ein Signal vom Anfang zum Ende des Schaltkreises.
   \end{frame}
@@ -179,7 +183,6 @@
     \end{defin}
     Eine monotone boolesche Funktion ist eine Slice(teilbare)-Funktionen, wenn es
     ein $k \in \mathbb{N}$ gibt, dass die Anzahl der Eing\"ange auf $1$, ab dem der Ausgang $1$ wird.
-%   an wie viele Eing\"ange auf $1$ stehen m\"ussten damit der Ausgang $1$ wird.
   \end{frame}
 
   \subsection{Beispiele}
@@ -189,9 +192,9 @@
         Funktion  & $k$   & Eing\"ange\\ \hline
         AND       & 2     & 2\\
         OR        & 1     & 2\\
-        1         & 0     & 0\\
-        0         & 0     & 0\\
-        $P_{n}$     & 1     & 1\\ \hline
+        1         & 0     & 0\\ % eigentlich sol alles aus U_2 sein somit sind eh nur min zwei eing\"ange gegeben.
+        0         & 0     & 0\\ % gucken ob man ein gegen beispiel findet die monoton ist aber nicht ein k sodass es eine slice funktion ist
+        $P_{n}$   & 1     & 1\\ \hline
       \end{tabular}
   \end{frame}
 
@@ -206,11 +209,11 @@
         \begin{cases}
           0 & \sum\nolimits_{i=1}^{n} x_i < k\\
           1 & \sum\nolimits_{i=1}^{n} x_1 > k\\
-          f(x) & \sum\nolimits_{i=1}^{n} x_i = k % gucken ob i=1 oder i_1 gemeint war. weil es ist schon etwas komisch so gewesen.
+          f(x) & \sum\nolimits_{i=1}^{n} x_i = k
         \end{cases}
       \end{align*}
     \end{defin}
-    Der $k-te$ Slice einer booleschen Funktion ist immer monoton.
+    Somit ergibt sich der richtige Funktionswert genau dann wenn $k$ Eing\"ange auf $1$ stehen.
   \end{frame}
 
   \subsection{im Schaltkreis}
@@ -223,12 +226,14 @@
     Dieser Schaltkreis wird vom Ausgang aus zu den Eing\"angen in monotone Gatter umgewandelt (De Morgan’sche Regeln) und die Not Gatter werden bis zu den Eing\"angen verschoben.
   \end{frame}
 
+% zeigen an schaltbildern wie es im top - down erstellt wird
+
   \subsection{die Komplexität}
   \begin{frame}%Stephan
     \frametitle{die Komplexität von Slice-Funktionen}
     \begin{beh}
       $C(f) \leq C(f^{(0)}, f^{(1)}, \dots ,f^{(n)})+h(n)$\\
-      $f \in U_2; f^{(k)}$ ist der k-te Slice
+      $f \in \{0,1\}^{n} \rightarrow \{0,1\} ; f^{(k)}$ ist der $k$-te Slice; $C(\dots)$ mit n+1 Ausg\"angen.
     \end{beh}
     \begin{itemize}
       \item $C(f^{(0)}, f^{(1)}, \dots ,f^{(n)})$ ist die Gesamtkomplexität für den SK, der alle Slice-Funktionen $f^{(k)}$ von $f(x)$ gleichzeitig berechnet
@@ -245,19 +250,18 @@
       Wenn $f$ eine Slice-Funktion ist, dann gilt:
       $C(f) \leq C_M(f) \leq (C(f) + n^2 log\;n)$%9.5 Marko
     \end{thm}
-    Die untere Schranke von $C_M(f)$ ist $C(f)|f \in U_2$ und die obere $C(f) + n^2 log\; n$.
+    Die untere Schranke von $C_M(f)$ ist $C(f)$ und die obere $C(f) + n^2 log\;n$.
   \end{frame}
 
   \subsection*{Schwellenwertfunktion}
   \begin{frame}%Marko         ab hier  meine änderungen
      \frametitle{Schwellenwertfunktion}
-     Die Schwellenwertfunktion $ T^{n-1}_k(X_i)$\\
+     Die Schwellenwertfunktion $ T^{i}_k(X_i - X_n)$\\
      wobei: \\
-     $X$ die Menge aller Eingänge des Schaltkreises ist.\\
-     $X_i = X - x_i$ % wirklich ein kleines x?
+     $X \in \{x_1, \dots,x_n\}$ die Menge aller Eingänge des Schaltkreises
      \begin{defin}
        \begin{align*}
-       T^{n-1}_k (X_i)=
+       T^{i}_k (X_i - X_n)=
        \begin{cases}
          0 & \sum\nolimits_{j=1}^{n} x_j < k\\
          1 & \sum\nolimits_{j=1}^{n} x_j > k\\
