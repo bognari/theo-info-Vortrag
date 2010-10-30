@@ -1,0 +1,24 @@
+\documentclass[a4paper]{article}
+
+\usepackage[utf8x]{inputenc}
+\PrerenderUnicode{äöüÄÖÜß}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{lemma}{Lemma}
+
+\begin{document}
+\begin{lemma}
+	Für jeden $U_2$ Schaltkreis $\beta$, gibt es einen äquivalnten Schaltkreis, welcher höchstens
+	2 mal so groß ist wie $\beta$, in dem nur NOT-Gatter nur bei den Variablen benutzt werden.
+\end{lemma}
+
+Bei einem $U_2$ Schaltkreis handelt es sich um einen Schaltkreis bei dem nur die Gatter AND, OR und NOT mit 2 Eingängen verwendet werden.\\
+
+Als erstes werden die Gatter topologisch sortiert. Also Gatter die andere Gatter an ihren Eingängen haben kommen nach diesen.\\
+Nun beginnen wir mit dem obersten Gatter. Sollte dessen Ausgang verneint sein, so wenden wir darauf die Regel von deMorgan\footnote{$\overline{a\land{}b}=\overline{a}\lor\overline{b}$ Analog für OR} an.\\
+Sollten die Ausgänge verneint sein so verschieben wir diese Verneinung auf die Ausgänge der vorhergehenden Gatter, wobei sich doppelte Verneinungen Aufheben.\\
+Dies wird wiederholt für alle vorhergehenden Gatter.\\
+Für den Fall, dass ein Gatter negiert und nicht negiert verwendet wird, wird dieses Gatter verdoppelt.\\
+\qed{}
+\end{document}
