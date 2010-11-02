@@ -1,9 +1,24 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper,10pt]{article}
 
-\usepackage[utf8x]{inputenc}
-\PrerenderUnicode{äöüÄÖÜß}
-\usepackage{amsmath}
-\usepackage{amsthm}
+\setlength\parindent{0pt}
+
+\usepackage[utf8x]{inputenc} %soll utf8 als code verwenden
+\PrerenderUnicode{äöüÄÖÜß} % umlaute gehen nun auch
+
+\usepackage[ngerman]{babel} % deutsche Bezeichnungen
+
+\usepackage{amssymb} % mathe symbole
+\usepackage{amsmath} % mathe formeln
+\usepackage{amsthm} % mathe theoreme
+\usepackage{graphicx} % Darstellung von Bildern
+
+\usepackage{pstricks}
+
+% - Times, Helvetica, Courier (Word Standard...)
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{listings}
 
 \newtheorem{lemma}{Lemma}
 
@@ -21,4 +36,25 @@ Sollten die Ausgänge verneint sein so verschieben wir diese Verneinung auf die 
 Dies wird wiederholt für alle vorhergehenden Gatter.\\
 Für den Fall, dass ein Gatter negiert und nicht negiert verwendet wird, wird dieses Gatter verdoppelt.\\
 \qed{}
+
+Um das zu verdeutlichen nehmen wir einen beispiel Schaltkreis: \\
+
+\includegraphics[scale=0.50]{images/ursk.pdf}
+
+Dieser Schaltkreis ist um $U_2$ so wie es das Lemma bereits verlangt.
+Es hat eine $C(s) = 7$ dem zu folge sollte der neue Schaltkreis maximal eine von $14$ haben.
+Zu erst stellen wir zu jedem Input auch sein Inverses bereit und von oben nach Unten (top down) stellen wir nun
+f\"ur jedes Gatter auch sein Inverses nach den Regeln von DeMorgan zu verf\"ugung.
+Bei diesem Schritt kann es dazu kommen das wir zwei \"aquivalente Teilschaltkreise bekommen die wir zusammen f\"ugen k\"onnen. \\
+
+\includegraphics[scale=0.50]{images/zwisk.pdf}
+
+Dieser neue Schaltkreis hat nun eine Komplexit\"at von $14$, also h\"alt er sich an das Lemma. Die Not-Gatter sind auch alle verschwunden und werden nun \"uber
+die Inversen Inputs realisiert. Zum Schluss k\"onnen wir noch \glqq M\"ull\grqq entfernen. Also tote Gatter die wir nicht ben\"otigen da ihre Signale ins Nirvana verschwinden.\\
+
+\includegraphics[scale=0.50]{images/endsk.pdf}
+
+Am Ende konnten wir wieder 3 Gatter entfernen und konnten somit den Schaltkreis optimieren. Die neue Komplexit\"at ist nun $11$ und damit ist diese geringer als das Zweifache der Komplexit\"at des Urschaltkreises.
+
+
 \end{document}
