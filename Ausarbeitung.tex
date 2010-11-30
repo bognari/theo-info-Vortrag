@@ -24,6 +24,8 @@
 \usepackage{listings}
 
 \newtheorem{lemma}{Lemma}
+\newtheorem{coro}{Corrolar}
+\newtheorem{defi}{Definition}
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
@@ -39,39 +41,57 @@
 \cfoot{Monotone vs. Non-monotone Circuit Complexity}
 
 $\;$ \\
+\begin{defi}
+  In einem $U_2$ Schaltkreis gibt es nur Gatter der Form $(x^a\oplus y^b)^c$, diese sind Basisfunktionen auf dem AND $(\wedge)$ Operator.
+  Durch die Regeln von DeMorgan\footnote{$\overline{a\land{}b}=\overline{a}\lor\overline{b}$} kann man diese jedoch auch mit dem OR $(\vee)$ Operator
+  erzeugen.
+\end{defi}
 
-In einem $U_2$ Schaltkreis gibt es nur Gatter der Form $(x^a\oplus y^b)^c$ enth\"alt,die nur zwei Eing\"anget haben.\\
+\begin{defi}
+  Gr\"o\ss{}enkomplexit\"at ist die minimale Anzahl an Gatter, die man f\"ur die Synthese eines Schaltkreises braucht.
+\end{defi}
+
 % Bei einem $U_2$ Schaltkreis handelt es sich um einen Schaltkreis bei dem nur die Gatter AND, OR und NOT mit 2 Eingängen verwendet werden.\\
 
 \begin{lemma}
-  Gegeben ist ein beliebiger $U_2$ Schaltkreis $\beta$. F\"ur diesen gibt es einen Schaltkreis $\beta’$, der h\"ochstens
-  die zweifache Gr\"o\ss{}enkomplexit\"at hat wie $\beta$. In $\beta’$ wurden alle Verneinungen entfernt und f\"ur jeden Eing\"ange von
-  $\beta$ wird auch sein Inverses bereit gestellt.
+  Gegeben ist ein beliebiger $U_2$ Schaltkreis $\beta$. F\"ur diesen gibt es einen Schaltkreis $\beta’$ zur AND, OR-Basis, der h\"ochstens
+  die zweifache Gr\"o\ss{}enkomplexit\"at hat wie $\beta$. In $\beta’$ werden nun auch keine internen NOT-Gatter mehr verwendet. F\"ur
+  jeden Eingang von $\beta$ wird auch sein Inverses bereit gestellt.
 % Für jeden $U_2$ Schaltkreis $\beta$, gibt es einen äquivalnten Schaltkreis, welcher höchstens
 % 2 mal so groß ist wie $\beta$, in dem nur NOT-Gatter nur bei den Variablen benutzt werden.
 \end{lemma}
 
-$\forall \; \beta \in U_2 \; \exists \; \beta' : C(\beta') \leq 2 \cdot C(\beta)$\\
+\begin{coro}
+  Sei $C(f)$ die Größenkomplexität zur Basis $U_2$. Sei $C'(f)$ die
+  Größenkomplexität zur AND, OR-Basis mit zusätzlichen invertierten
+  Eingängen, d.h. die minimal notwendige Anzahl Gatter um damit die
+  Funktion $f$ zu realisieren.\\
+  Dann ist $C'(f) \leq 2 \cdot C(f)$.
+\end{coro}
 
-Gucken wir uns zuerst die Gatter nochmal genauer an. Wir haben die Gatter der Form $(x^a\oplus y^b)^c$, wobei $\oplus$ die Operation $\wedge$ oder $\vee$ darstellt
-und die Variablen $a,b,c \in \{0,1\}$ angeben ob man das Inverse oder die Projektion benutzt. Somit k\"onnen wir sagen das $x^1$ das Inverse und
-$x^0$ die Projektion darstellt. Als Operation nehmen wir nun $\wedge$ an (mit $\vee$ ist es analog) so k\"onnen wir folgene Tabelle mit hilfe der Regeln von DeMorgan\footnote{$\overline{a\land{}b}=\overline{a}\lor\overline{b}$} erstellen.\\
+$\forall \; \beta (\in U_2) \; \exists \; \beta' (\in AND/OR) : C'(\beta') \leq 2 \cdot C(\beta)$\\
+
+Man hat die Gatter der Form $(x^a\oplus y^b)^c$, bei denen $\oplus$ die Operation $(\wedge)$ darstellt,
+wie schon beschrieben ist es mit dem $(\vee)$ genauso und die Variablen $a,b,c \in \{0,1\}$ geben an, ob das Inverse oder die Projektion des
+Ein- oder Ausgangs benutzt werden soll. Man definiert bei $x^1$ das Inverse und bei $x^0$ die Projektion. Als Operator benutzt man
+$(\wedge)$, so kann man folgende Tabelle mit Hilfe der Regeln von DeMorgan erstellen.\\
 
 \begin{tabular}{|cc|c|c|c|c|}\hline
- $a$    & $b$   & $c = 0$                               & $c = 0$ DeMorgan                              & $c=1$                                                 & $c = 0$ DeMorgan\\
-  0     & 0     & $(x \wedge y)$                        & $\overline{(\overline{x} \vee \overline{y})}$ & $\overline{(x \wedge y)}$                             & $(\overline{x} \vee \overline{y})$ \\
-  0     & 1     & $(x \wedge \overline{y})$             & $\overline{(\overline{x} \vee y)}$            & $\overline{(x \wedge \overline{y})}$                  & $(x \vee \overline{y})$ \\
-  1     & 0     & $(\overline{x} \wedge y)$             & $\overline{(x \vee \overline{y})}$            & $\overline{(\overline{x} \wedge y)}$                  & $(\overline{x} \vee y)$ \\
-  1     & 1     & $(\overline{x} \wedge \overline{y})$  & $\overline{(x \vee y)}$                       & $\overline{(\overline{x} \wedge \overline{y})}$       & $(x \vee y)$ \\ \hline
+  $a$   & $b$   & $c = 0$                               & $c = 0$ DeMorgan                              & $c=1$                                                 & $c = 0$ DeMorgan\\
+  0     & 0     & $(x^0 \wedge y^0)^0$                  & $(x^1 \vee y^1)^1$                            & $(x^0 \wedge y^0)^1$                                  & $(x^1 \vee y^1)^0$ \\
+  0     & 1     & $(x^0 \wedge y^1)^0$                  & $(x^1 \vee y^0)^1$                            & $(x^0 \wedge y^1)^1$                                  & $(x^0 \vee y^1)^0$ \\
+  1     & 0     & $(x^1 \wedge y^0)^0$                  & $(x^0 \vee y^1)^1$                            & $(x^1 \wedge y^0)^1$                                  & $(x^1 \vee y^0)^0$ \\
+  1     & 1     & $(x^1 \wedge y^1)^0$                  & $(x^0 \vee y^0)^1$                            & $(x^1 \wedge y^1)^1$                                  & $(x^0 \vee y^0)^0$ \\ \hline
 \end{tabular}\\
 
-Mit dieser Tabelle stellen wir einen beliebigen $U_2$ Schaltkreis um sodass er das Lemma erf\"ullt.
-Wir beginnen am Ausgang (Top) und arbeiten uns zu dein Eing\"angen (Bottom) (Top-Down-Prinzip) und erstellen f\"ur jedes Gatter $z = (x^a\oplus y^b)^c$ zwei neue Gatter
-$z_0, z_1$ wobei $z_0 = (x^a\oplus y^b)^0$ und $z_1 =  (x^a\oplus y^b)^1$ repr\"asentieren. Somit haben wir f\"ur jedes Gatter die Projektion und das Inverse in unserem neuen Schaltkreis.
-Dieser Schaltkreis hat eine Gr\"o\ss{}enkomplexit\"at von dem zweifachen der Gr\"o\ss{}enkomplexit\"at unseres alten Schaltkreises und erf\"ullt somit das Lemma indem wir alle Vermeinungen entfernt haben.\\
-
-Am Ende k\"onnen wir noch alle \"uberfl\"ussigen Gatter entfernen von denen der Ausgang nicht abh\"angig ist. \\
-
+Mit dieser Tabelle baut man einen beliebigen $U_2$ Schaltkreis um, sodass er das Lemma erf\"ullt.
+Man %beginnen am Ausgang (Top) und arbeiten uns zu dein Eing\"angen (Bottom) vor (Top-Down-Prinzip) und
+erstellt f\"ur jedes Gatter $z = (x^a\oplus y^b)^c$
+zwei neue Gatter $z_0, \;z_1$ wobei $z_0 = (x^a\oplus y^b)^0$ und $z_1 =  (x^a\oplus y^b)^1$ repr\"asentieren. Somit hat man f\"ur jedes Gatter die
+Projektion und das Inverse im neuen Schaltkreis. Diesen Schritt f\"uhrt man f\"ur jedes Gatter und die Eing\"ange durch.
+Der neue Schaltkreis $\beta'$ hat nun die doppelte Gr\"o\ss{}enkomplexit\"at wie der alte $\beta$ Schaltkreis, weil man die Anzahl der Gatter
+verdoppelt hat. Jedoch kann man die Gr\"o\ss{}enkomplexit\"at noch etwas verringern, indem man die f\"ur den Ausgang irrelevanten Gatter entfernt.
+Somit gilt $C(\beta') \leq 2 \cdot C(\beta)$.\\
 \qed{}
 
 
@@ -94,14 +114,14 @@ Am Ende k\"onnen wir noch alle \"uberfl\"ussigen Gatter entfernen von denen der 
 
 Nun folgt ein Beispiel: \\
 
-Wir nehmen uns die Funktion: $x_{out} = (x_1 \oplus (\overline{x_2} \oplus (x_3 \wedge \overline{x_4})))$ und
-stellen daf\"ur den entsprechenden $U_2$ Schaltkreis auf, Dieser hat eine Gr\"o\ss{}enkomplexit\"at von 7.\\
+Wir nehmen uns die Funktion: $x_{out} = (x_1 \oplus (\overline{x_2} \oplus (x_3 \wedge \overline{x_4})))$\footnote{$\oplus = (a \wedge \overline{b}) or (\overline{a} \wedge b)$ (XOR)} und
+stellen daf\"ur den entsprechenden $U_2$ Schaltkreis auf, dieser hat eine Gr\"o\ss{}enkomplexit\"at von 7.\\
+Bemerkung: Die \glqq Kreise\grqq \;sind keine eigenst\"andigen NOT-Gatter, weil im $U_2$ keine existieren, sondern geh\"oren intern zum Gatter.
 
 \includegraphics[scale=0.50]{images/ursk.pdf}
 
-Nun gehen wir wie oben beschrieben nach dem Top-Down-Prinzip durch und stellen in unserem neuen Schaltkreis f\"ur jedes Gatter
-die Projektion und sein Inverses bereit. Hierbei k\"onnen \"aquivalente Teilschaltkreise entstehen, die wir wieder zusammenfassen k\"onnen.
-Unser neuer Schaltkreis hat eine Gr\"o\ss{}enkomplexitvon 14 also $7 * 2 = 14$ somit erf\"ullt er das Lemma. \\
+Nun stellen wir in unserem neuen Schaltkreis f\"ur jedes Gatter
+die Projektion und sein Inverses bereit. Der neue Schaltkreis hat eine Gr\"o\ss{}enkomplexit von 14 also $7 \cdot 2 = 14$ somit erf\"ullt er das Lemma. \\
 
 
 % Nun stellen wir f\"ur jedes Gatter vom Ende aus auch sein Inverses bereit nach der Regel von deMorgan, bis wir bei
@@ -117,7 +137,7 @@ Unser neuer Schaltkreis hat eine Gr\"o\ss{}enkomplexitvon 14 also $7 * 2 = 14$ s
 
 \includegraphics[scale=0.50]{images/zwisk.pdf}
 
-Am Ende konnten wir noch \"uberfl\"ussige Gatter entfernen, weil von ihnen der Ausgang nicht abh\"angig war und erreichen das unser Schaltkreis sogar kleiner
+Am Ende entfernen wir noch die f\"ur den Ausgang irrelevanten Gatter erreichen das unser Schaltkreis sogar kleiner
 als 14 geworden ist, n\"amlich 11.\\
 
 % Jetzt k\"onnen wir alle \glqq toten\textquotedblright $\;$Gatter entfernen um den Schaltkreis zu optimieren und erreichen eine Komplexit\"at von 11.\\
